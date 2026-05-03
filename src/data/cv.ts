@@ -61,8 +61,7 @@ export const publications = [
 		authors: 'Jintang Xue, Yun-Cheng Wang, Chengwei Wei, C.-C. Jay Kuo',
 		journal: 'APSIPA Transactions on Signal and Information Processing',
 		time: '2024',
-		link:
-			'https://www.nowpublishers.com/article/OpenAccessDownload/SIP-20240046',
+		link: 'https://arxiv.org/abs/2407.12342',
 		abstract:
 			'Weakly-supervised feature selection compresses word embeddings while preserving their semantic structure.',
 		images: ['/images/papers/wordfs-1.png'],
@@ -73,7 +72,7 @@ export const publications = [
 			'Min Zhang*, Jintang Xue*, Pranav Kadam, Hardik Prajapati, Shan Liu, C.-C. Jay Kuo',
 		journal: 'APSIPA Transactions on Signal and Information Processing',
 		time: '2023',
-		link: 'https://www.nowpublishers.com/article/Details/SIP-2023-0014',
+		link: 'https://arxiv.org/abs/2303.10898',
 		abstract:
 			'A lightweight, feed-forward model for point cloud classification, designed for resource-constrained devices. (* equal contribution)',
 		images: ['/images/papers/green-pointhop.png'],
