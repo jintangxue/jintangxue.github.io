@@ -37,6 +37,7 @@ export const publications = [
 		time: '2026',
 		link:
 			'https://openaccess.thecvf.com/content/WACV2026/html/Xue_Descrip3D_Enhancing_Large_Language_Model-based_3D_Scene_Understanding_with_Object-Level_WACV_2026_paper.html',
+		code: 'https://github.com/jintangxue/Descrip3D',
 		abstract:
 			'Injecting object-level text descriptions into LLMs significantly improves 3D scene understanding — without retraining the visual backbone.',
 		images: [
@@ -62,6 +63,7 @@ export const publications = [
 		journal: 'APSIPA Transactions on Signal and Information Processing',
 		time: '2024',
 		link: 'https://arxiv.org/abs/2407.12342',
+		code: 'https://github.com/jintangxue/WordFS',
 		abstract:
 			'Weakly-supervised feature selection compresses word embeddings while preserving their semantic structure.',
 		images: ['/images/papers/wordfs-1.png'],
@@ -73,6 +75,7 @@ export const publications = [
 		journal: 'APSIPA Transactions on Signal and Information Processing',
 		time: '2023',
 		link: 'https://arxiv.org/abs/2303.10898',
+		code: 'https://github.com/jintangxue/Green-PointHop',
 		abstract:
 			'A lightweight, feed-forward model for point cloud classification, designed for resource-constrained devices. (* equal contribution)',
 		images: ['/images/papers/green-pointhop.png'],
