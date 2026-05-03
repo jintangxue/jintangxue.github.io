@@ -1,40 +1,68 @@
 export const profile = {
-	fullName: 'Your Name',
-	title: '',
-	institute: '',
-	author_name: '', // Author name to be highlighted in the papers section
+	fullName: 'Jintang Xue',
+	title: 'Final-year Ph.D. Candidate',
+	institute: 'USC Viterbi (ECE)',
+	author_name: 'Jintang Xue', // Author name to be highlighted in the papers section
 	research_areas: [
-		// { title: 'Physics', description: 'Brief description of the research interest', field: 'physics' },
+		{
+			title: 'Large Language Models',
+			description:
+				'Reasoning, generation, and grounding of foundation language models.',
+			field: 'computer-science',
+			icon: '💬',
+		},
+		{
+			title: 'Multimodal Learning',
+			description:
+				'Bridging language with vision and 3D scenes through joint representations.',
+			field: 'computer-science',
+			icon: '🎨',
+		},
+		{
+			title: '3D Understanding',
+			description:
+				'Point cloud reasoning, scene segmentation, and language-conditioned 3D analysis.',
+			field: 'engineering',
+			icon: '🧊',
+		},
+		{
+			title: 'Natural Language Processing',
+			description:
+				'Word embeddings, fairness in dialogue systems, and efficient feature selection.',
+			field: 'mathematics',
+			icon: '📝',
+		},
 	],
 }
 
 // Set equal to an empty string to hide the icon that you don't want to display
 export const social = {
-	email: '',
-	linkedin: '',
-	x: 'https://www.x.com/',
+	email: 'jintangx@usc.edu',
+	linkedin: 'https://www.linkedin.com/in/jintang-xue-1a348621b',
+	x: '',
 	bluesky: '',
-	github: '',
+	github: 'https://github.com/jintangxue',
 	gitlab: '',
-	scholar: '',
+	scholar: 'https://scholar.google.com/citations?user=jj6aMWUAAAAJ',
 	inspire: '',
 	arxiv: '',
-	orcid: '',
+	orcid: 'https://orcid.org/0009-0004-3531-8147',
 }
 
 export const template = {
-	website_url: 'https://localhost:4321', // Astro needs to know your site’s deployed URL to generate a sitemap. It must start with http:// or https://
+	website_url: 'https://jintangxue.github.io',
 	menu_left: false,
 	transitions: true,
-	lightTheme: 'light', // Select one of the Daisy UI Themes or create your own
-	darkTheme: 'dark', // Select one of the Daisy UI Themes or create your own
+	lightTheme: 'light',
+	darkTheme: 'dark',
 	excerptLength: 200,
 	postPerPage: 5,
-    base: '' // Repository name starting with /
+	base: '',
 }
 
 export const seo = {
-	default_title: 'Astro Academia',
-	default_description: 'Astro Academia is a template for academic websites.',
-	default_image: '/images/astro-academia.png',
+	default_title: 'Jintang Xue',
+	default_description:
+		'Final-year Ph.D. Candidate in ECE at USC Viterbi, working on multimodal foundation models for language and 3D scene understanding.',
+	default_image: '/images/profile.jpg',
 }

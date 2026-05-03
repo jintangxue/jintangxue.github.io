@@ -1,37 +1,308 @@
 ---
-import Layout from '../layouts/Layout.astro'
-
-import { profile } from '@/settings'
-import { publications } from '@/data/cv'
-import ProfilePictures from '@/assets/profile_pictures.jpg'
-import Hero from '@/components/ui/Hero.astro'
-import Grid from '@/components/ui/Grid.astro'
-import ArticleList from '@/components/ui/ArticleList.astro'
+import Layout from '@/layouts/Layout.astro'
+import { profile, social } from '@/settings'
+import { publications, education } from '@/data/cv'
+import SocialIcons from '@/components/ui/SocialIcons.astro'
+import { highlightAuthor } from '@/lib/utils'
 
 const { fullName, title, institute, research_areas } = profile
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<!-- Hero Section -->
-	<section class='flex items-center gap-12 border-b pb-12'>
-		<Hero
-			fullName={fullName}
-			title={title}
-			institute={institute}
-			profilePicture={ProfilePictures}
-		/>
+	<!-- About / Hero -->
+	<section id='about' class='border-b pb-12'>
+		<h1 class='text-4xl font-bold mb-3'>
+			Hi, I'm <span class='text-primary'>{fullName}</span>
+		</h1>
+		<p class='text-xl text-base-content/70 mb-5'>
+			{title} at {institute}
+		</p>
+		<div class='flex gap-3 items-center mb-6'>
+			<SocialIcons />
+		</div>
+		<p class='text-lg leading-relaxed'>
+			I'm a final-year Ph.D. Candidate at <a
+				href='https://viterbi.usc.edu'
+				target='_blank'
+				class='link link-hover text-primary'>USC Viterbi (ECE)</a
+			> in the <a
+				href='https://mcl.usc.edu/'
+				target='_blank'
+				class='link link-hover text-primary'>Media Communication Lab</a
+			>, advised by <a
+				href='https://viterbi.usc.edu/directory/faculty/Kuo/Chung-Chieh'
+				target='_blank'
+				class='link link-hover text-primary'>Prof. C.-C. Jay Kuo</a
+			>. My research focuses on multimodal foundation models — bridging large
+			language models with 3D scene understanding, multimodal reasoning, and
+			structured semantic representation. I'm currently on the academic and
+			industry job market for 2026.
+		</p>
 	</section>
 
 	<!-- Research Areas -->
-	<section class='py-12 border-b'>
-		<Grid gridTitle='Research Areas' gridItems={research_areas} />
+	<section id='research' class='py-12 border-b'>
+		<h2 class='text-3xl font-bold mb-8'>Research</h2>
+		<div class='grid grid-cols-1 md:grid-cols-2 gap-6'>
+			{
+				research_areas.map((area) => (
+					<div class='group p-6 rounded-lg bg-base-200 flex gap-4 items-start transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:bg-base-300/60 cursor-default'>
+						<div class='w-12 h-12 inline-flex items-center justify-center rounded-xl bg-primary/15 text-2xl shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[-4deg]'>
+							<span aria-hidden='true'>{area.icon}</span>
+						</div>
+						<div class='flex-1'>
+							<h3 class='text-xl font-semibold mb-2 transition-colors duration-300 group-hover:text-primary'>
+								{area.title}
+							</h3>
+							<p class='text-base'>{area.description}</p>
+						</div>
+					</div>
+				))
+			}
+		</div>
 	</section>
 
-	<!-- Recent Publications -->
-	<section class='py-12 border-t'>
-		<ArticleList listTitle='Recent Publications' listItems={publications} />
+	<script>
+		// Carousel buttons scroll the figure horizontally inside its container,
+		// without ever scrolling the page vertically. Uses data-attribute lookup
+		// instead of anchor hrefs to avoid any default browser scroll behavior.
+		function scrollToCarouselTarget(targetId: string) {
+			const target = document.getElementById(targetId)
+			if (!target) return
+			const carousel = target.parentElement
+			if (!carousel) return
+			// Compute the horizontal offset of the target within the carousel
+			// and scroll only that scroll container, leaving page scroll alone.
+			const left = target.offsetLeft - carousel.offsetLeft
+			carousel.scrollTo({ left, behavior: 'smooth' })
+		}
+
+		function bindCarousels() {
+			document.querySelectorAll<HTMLElement>('[data-carousel-nav]').forEach((btn) => {
+				if (btn.dataset.bound === '1') return
+				btn.dataset.bound = '1'
+				btn.addEventListener('click', (e) => {
+					e.preventDefault()
+					const id = btn.dataset.carouselNav
+					if (id) scrollToCarouselTarget(id)
+				})
+			})
+		}
+
+		bindCarousels()
+		document.addEventListener('astro:page-load', bindCarousels)
+	</script>
+
+	<!-- Education -->
+	<section id='education' class='py-12 border-b'>
+		<h2 class='text-3xl font-bold mb-8'>Education</h2>
+		<ol>
+			{
+				education.map((edu, index) => (
+					<li class='flex gap-5'>
+						{/* Vertical line + dot column */}
+						<div class='flex flex-col items-center shrink-0'>
+							<div class='w-3 h-3 rounded-full bg-primary ring-4 ring-base-100 mt-2' />
+							{index < education.length - 1 && (
+								<div class='flex-1 w-0.5 bg-primary/25 my-1' />
+							)}
+						</div>
+						{/* Content column */}
+						<div class={`flex-1 ${index < education.length - 1 ? 'pb-10' : ''}`}>
+							<p class='font-mono text-sm italic text-base-content/60 tracking-wide'>
+								{edu.time}
+							</p>
+							<h3 class='text-lg font-bold leading-snug mt-1'>
+								{edu.degree}
+							</h3>
+							<p class='text-base mt-1'>
+								{edu.school}
+								{edu.location && (
+									<span class='text-base-content/60'>, {edu.location}</span>
+								)}
+							</p>
+							{edu.description && (
+								<p class='text-sm italic text-base-content/70 mt-2 whitespace-pre-line leading-relaxed'>
+									{edu.description}
+								</p>
+							)}
+						</div>
+					</li>
+				))
+			}
+		</ol>
+	</section>
+
+	<!-- Publications -->
+	<section id='papers' class='py-12'>
+		<h2 class='text-3xl font-bold mb-8'>Publications</h2>
+		<div class='space-y-6'>
+			{
+				publications.map((paper, paperIndex) => {
+					const carouselId = `paper-carousel-${paperIndex}`
+					const hasImages = paper.images && paper.images.length > 0
+					return (
+						<div class='card bg-base-200 transition-shadow duration-300 hover:shadow-md'>
+							<div class='card-body'>
+								{hasImages ? (
+									<div class='flex flex-col sm:flex-row gap-5'>
+										<div class='shrink-0 sm:w-56 lg:w-64'>
+											<div class='w-full aspect-video bg-base-100 rounded-md border border-base-300 overflow-hidden'>
+											<div
+												id={carouselId}
+												class='carousel carousel-center w-full h-full [&::-webkit-scrollbar]:hidden [scrollbar-width:none]'
+											>
+												{paper.images!.map((img, i) => {
+													const total = paper.images!.length
+													const prevId = `${carouselId}-${(i - 1 + total) % total}`
+													const nextId = `${carouselId}-${(i + 1) % total}`
+													return (
+														<div
+															id={`${carouselId}-${i}`}
+															class='carousel-item relative w-full flex items-center justify-center'
+														>
+															<img
+																src={img}
+																alt={`${paper.title} figure ${i + 1}`}
+																class='max-w-full max-h-full object-contain'
+																loading='lazy'
+															/>
+															{total > 1 && (
+																<>
+																	<button
+																		type='button'
+																		data-carousel-nav={prevId}
+																		class='absolute left-1.5 top-1/2 -translate-y-1/2 w-7 h-7 inline-flex items-center justify-center rounded-full bg-base-100/80 backdrop-blur-sm border border-base-300 text-base-content/70 hover:bg-primary hover:text-primary-content hover:border-primary transition-colors'
+																		aria-label='Previous figure'
+																	>
+																		<svg
+																			xmlns='http://www.w3.org/2000/svg'
+																			viewBox='0 0 20 20'
+																			fill='currentColor'
+																			class='w-4 h-4'
+																		>
+																			<path
+																				fill-rule='evenodd'
+																				d='M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z'
+																				clip-rule='evenodd'
+																			/>
+																		</svg>
+																	</button>
+																	<button
+																		type='button'
+																		data-carousel-nav={nextId}
+																		class='absolute right-1.5 top-1/2 -translate-y-1/2 w-7 h-7 inline-flex items-center justify-center rounded-full bg-base-100/80 backdrop-blur-sm border border-base-300 text-base-content/70 hover:bg-primary hover:text-primary-content hover:border-primary transition-colors'
+																		aria-label='Next figure'
+																	>
+																		<svg
+																			xmlns='http://www.w3.org/2000/svg'
+																			viewBox='0 0 20 20'
+																			fill='currentColor'
+																			class='w-4 h-4'
+																		>
+																			<path
+																				fill-rule='evenodd'
+																				d='M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z'
+																				clip-rule='evenodd'
+																			/>
+																		</svg>
+																	</button>
+																</>
+															)}
+														</div>
+													)
+												})}
+											</div>
+											</div>
+											{paper.images!.length > 1 && (
+												<div class='flex justify-center gap-1.5 mt-2'>
+													{paper.images!.map((_, i) => (
+														<button
+															type='button'
+															data-carousel-nav={`${carouselId}-${i}`}
+															class='w-1.5 h-1.5 rounded-full bg-base-content/30 hover:bg-primary transition-colors'
+															aria-label={`Go to figure ${i + 1}`}
+														/>
+													))}
+												</div>
+											)}
+										</div>
+										<div class='flex-1 min-w-0 flex flex-col'>
+											<h3 class='card-title text-xl leading-tight'>
+												{paper.link ? (
+													<a
+														href={paper.link}
+														target='_blank'
+														class='hover:text-primary'
+													>
+														{paper.title}
+													</a>
+												) : (
+													<span>{paper.title}</span>
+												)}
+											</h3>
+											<p class='text-base mt-2'>
+												<span set:html={highlightAuthor(paper.authors)} />
+											</p>
+											<p class='text-sm mt-1'>
+												<span class='italic'>{paper.journal}</span> •{' '}
+												{paper.time}
+											</p>
+											{paper.abstract && (
+												<p class='text-sm text-base-content/80 mt-2'>
+													{paper.abstract}
+												</p>
+											)}
+										</div>
+									</div>
+								) : (
+									<>
+										<h3 class='card-title text-xl'>
+											{paper.link ? (
+												<a
+													href={paper.link}
+													target='_blank'
+													class='hover:text-primary'
+												>
+													{paper.title}
+												</a>
+											) : (
+												<span>{paper.title}</span>
+											)}
+										</h3>
+										<p class='text-base'>
+											<span set:html={highlightAuthor(paper.authors)} />
+										</p>
+										<p class='text-sm'>
+											<span class='italic'>{paper.journal}</span> • {paper.time}
+										</p>
+										{paper.abstract && (
+											<p class='text-sm text-base-content/80'>
+												{paper.abstract}
+											</p>
+										)}
+									</>
+								)}
+							</div>
+						</div>
+					)
+				})
+			}
+		</div>
+		{
+			social.scholar && (
+				<p class='mt-6 text-sm text-base-content/70 italic'>
+					For a complete publication list, see{' '}
+					<a
+						href={social.scholar}
+						target='_blank'
+						class='link link-hover text-primary'
+					>
+						Google Scholar
+					</a>
+					.
+				</p>
+			)
+		}
 	</section>
 </Layout>
