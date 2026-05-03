@@ -3,6 +3,7 @@ export const profile = {
 	title: 'Final-year Ph.D. Candidate',
 	institute: 'USC Viterbi (ECE)',
 	author_name: 'Jintang Xue', // Author name to be highlighted in the papers section
+	cv: '/files/Jintang_Xue_CV_2025.11.8.pdf',
 	research_areas: [
 		{
 			title: 'Large Language Models',

@@ -1,10 +1,10 @@
 ---
 import { Image } from 'astro:assets'
-import { profile } from '../../settings'
+import { profile, social } from '../../settings'
 import SocialIcons from './SocialIcons.astro'
 import ProfilePictures from '@/assets/profile_pictures.jpg'
 
-const { fullName, title, institute } = profile
+const { fullName, title, institute, cv } = profile
 ---
 <aside
 	class='px-4 pt-4 h-screen w-[20rem] bg-base-200 text-base-content flex flex-col'
@@ -31,6 +31,26 @@ const { fullName, title, institute } = profile
 							<span aria-hidden='true' class='text-lg'>📍</span>
 							<span>Los Angeles, CA</span>
 						</p>
+						{social.email && (
+							<a
+								href={`mailto:${social.email}`}
+								class='flex items-center gap-2 hover:text-primary transition-colors'
+							>
+								<span aria-hidden='true' class='text-lg'>📧</span>
+								<span>{social.email}</span>
+							</a>
+						)}
+						{cv && (
+							<a
+								href={cv}
+								target='_blank'
+								rel='noopener noreferrer'
+								class='flex items-center gap-2 hover:text-primary transition-colors'
+							>
+								<span aria-hidden='true' class='text-lg'>📄</span>
+								<span>Curriculum Vitae</span>
+							</a>
+						)}
 					</div>
 				</div>
 			</div>
