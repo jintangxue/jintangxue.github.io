@@ -1,7 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro'
 import { profile, social } from '@/settings'
-import { publications, education } from '@/data/cv'
+import { publications, education, experiences } from '@/data/cv'
 import SocialIcons from '@/components/ui/SocialIcons.astro'
 import { highlightAuthor } from '@/lib/utils'
 
@@ -132,6 +132,55 @@ const { fullName, title, institute, research_areas } = profile
 			}
 		</ol>
 	</section>
+
+	<!-- Experience -->
+	{experiences.length > 0 && (
+		<section id='experience' class='py-12 border-b'>
+			<h2 class='text-3xl font-bold mb-8'>Experience</h2>
+			<ol>
+				{
+					experiences.map((exp, index) => (
+						<li class='flex gap-5'>
+							{/* Vertical line + dot column */}
+							<div class='flex flex-col items-center shrink-0'>
+								<div class='w-3 h-3 rounded-full bg-primary ring-4 ring-base-100 mt-2' />
+								{index < experiences.length - 1 && (
+									<div class='flex-1 w-0.5 bg-primary/25 my-1' />
+								)}
+							</div>
+							{/* Content column */}
+							<div class={`flex-1 ${index < experiences.length - 1 ? 'pb-10' : ''}`}>
+								<p class='font-mono text-sm italic text-base-content/60 tracking-wide'>
+									{exp.time}
+								</p>
+								<h3 class='text-lg font-bold leading-snug mt-1'>
+									{exp.position}
+								</h3>
+								<p class='text-base mt-1'>
+									{exp.company}
+									{exp.type && (
+										<span class='text-base-content/60'> · {exp.type}</span>
+									)}
+								</p>
+								{(exp.location || exp.mode) && (
+									<p class='text-sm text-base-content/70 mt-1'>
+										{exp.location}
+										{exp.location && exp.mode && ' · '}
+										{exp.mode}
+									</p>
+								)}
+								{exp.description && (
+									<p class='text-sm italic text-base-content/70 mt-2 whitespace-pre-line leading-relaxed'>
+										{exp.description}
+									</p>
+								)}
+							</div>
+						</li>
+					))
+				}
+			</ol>
+		</section>
+	)}
 
 	<!-- Publications -->
 	<section id='papers' class='py-12'>
