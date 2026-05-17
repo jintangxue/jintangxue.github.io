@@ -7,6 +7,7 @@ export const experiences = [
 		location: 'Mountain View, CA',
 		mode: 'Hybrid',
 		description: '',
+		logo: '/images/logos/google.png',
 	},
 ];
 
@@ -18,6 +19,7 @@ export const education = [
 		location: 'Los Angeles, CA',
 		description:
 			'Advised by Prof. C.-C. Jay Kuo\nMedia Communication Lab',
+		logo: '/images/logos/usc.svg',
 	},
 	{
 		school: 'University of Southern California',
@@ -25,6 +27,7 @@ export const education = [
 		degree: 'M.S. in Electrical and Computer Engineering',
 		location: 'Los Angeles, CA',
 		description: '',
+		logo: '/images/logos/usc.svg',
 	},
 	{
 		school: 'Shanghai University',
@@ -32,6 +35,7 @@ export const education = [
 		degree: 'B.S. in Communication Engineering',
 		location: 'Shanghai, China',
 		description: '',
+		logo: '/images/logos/shu.svg',
 	},
 ];
 

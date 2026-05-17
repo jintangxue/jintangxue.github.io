@@ -100,9 +100,20 @@ const { fullName, title, institute, research_areas } = profile
 			{
 				education.map((edu, index) => (
 					<li class='flex gap-5'>
-						{/* Vertical line + dot column */}
+						{/* Vertical line + logo column */}
 						<div class='flex flex-col items-center shrink-0'>
-							<div class='w-3 h-3 rounded-full bg-primary ring-4 ring-base-100 mt-2' />
+							{edu.logo ? (
+								<div class='w-10 h-10 rounded-full bg-base-100 ring-2 ring-base-300 overflow-hidden flex items-center justify-center p-1'>
+									<img
+										src={edu.logo}
+										alt={`${edu.school} logo`}
+										class='w-full h-full object-contain'
+										loading='lazy'
+									/>
+								</div>
+							) : (
+								<div class='w-3 h-3 rounded-full bg-primary ring-4 ring-base-100 mt-2' />
+							)}
 							{index < education.length - 1 && (
 								<div class='flex-1 w-0.5 bg-primary/25 my-1' />
 							)}
@@ -141,9 +152,20 @@ const { fullName, title, institute, research_areas } = profile
 				{
 					experiences.map((exp, index) => (
 						<li class='flex gap-5'>
-							{/* Vertical line + dot column */}
+							{/* Vertical line + logo column */}
 							<div class='flex flex-col items-center shrink-0'>
-								<div class='w-3 h-3 rounded-full bg-primary ring-4 ring-base-100 mt-2' />
+								{exp.logo ? (
+									<div class='w-10 h-10 rounded-full bg-base-100 ring-2 ring-base-300 overflow-hidden flex items-center justify-center p-1'>
+										<img
+											src={exp.logo}
+											alt={`${exp.company} logo`}
+											class='w-full h-full object-contain'
+											loading='lazy'
+										/>
+									</div>
+								) : (
+									<div class='w-3 h-3 rounded-full bg-primary ring-4 ring-base-100 mt-2' />
+								)}
 								{index < experiences.length - 1 && (
 									<div class='flex-1 w-0.5 bg-primary/25 my-1' />
 								)}
