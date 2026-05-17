@@ -178,19 +178,7 @@ const { fullName, title, institute, research_areas } = profile
 								<h3 class='text-lg font-bold leading-snug mt-1'>
 									{exp.position}
 								</h3>
-								<p class='text-base mt-1'>
-									{exp.company}
-									{exp.type && (
-										<span class='text-base-content/60'> · {exp.type}</span>
-									)}
-								</p>
-								{(exp.location || exp.mode) && (
-									<p class='text-sm text-base-content/70 mt-1'>
-										{exp.location}
-										{exp.location && exp.mode && ' · '}
-										{exp.mode}
-									</p>
-								)}
+								<p class='text-base mt-1'>{exp.company}</p>
 								{exp.description && (
 									<p class='text-sm italic text-base-content/70 mt-2 whitespace-pre-line leading-relaxed'>
 										{exp.description}

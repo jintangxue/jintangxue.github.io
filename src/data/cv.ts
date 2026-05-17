@@ -2,10 +2,7 @@ export const experiences = [
 	{
 		position: 'Software Engineering PhD Intern',
 		company: 'Google',
-		type: 'Internship',
 		time: 'May 2026 - Present',
-		location: 'Mountain View, CA',
-		mode: 'Hybrid',
 		description: '',
 		logo: '/images/logos/google.png',
 	},
