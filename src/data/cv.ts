@@ -41,6 +41,34 @@ export const skills = [];
 export const publications = [
 	{
 		title:
+			'3D-PLOT-LLM: Part-Level Object Tokens for 3D Large Language Models',
+		authors:
+			'Jintang Xue, Xinyu Wang, Yixing Wu, Jingwen Chen, C.-C. Jay Kuo',
+		journal: 'arXiv',
+		time: '2026',
+		link: 'https://arxiv.org/abs/2606.19828',
+		abstract:
+			'Reorganizing the 3D token stream into part-level markers makes object parts directly addressable as dedicated vocabulary tokens, letting the LLM name and reason about object parts — without segmentation decoders or heavier encoders.',
+		images: [
+			'/images/papers/3d-plot-llm.png',
+			'/images/papers/3d-plot-llm-2.png',
+		],
+	},
+	{
+		title:
+			'PASR: Pattern-Aware Scene-Conditioned Reasoning for Camouflaged Object Detection',
+		authors: 'Xinyu Wang, Jintang Xue, C.-C. Jay Kuo',
+		journal: 'ECCV',
+		time: '2026',
+		abstract:
+			'Casts camouflaged object detection as scene-conditioned pattern-deviation reasoning, using an annotation-free prototype library to localize objects without retraining — narrowing the gap to fully-supervised methods.',
+		images: [
+			'/images/papers/pasr.png',
+			'/images/papers/pasr-2.png',
+		],
+	},
+	{
+		title:
 			'Descrip3D: Enhancing Large Language Model-based 3D Scene Understanding with Object-Level Text Descriptions',
 		authors:
 			'Jintang Xue, Ganning Zhao, Jie-En Yao, Hong-En Chen, Yue Hu, Meida Chen, Suya You, C.-C. Jay Kuo',
