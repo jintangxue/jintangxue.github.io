@@ -44,7 +44,7 @@ export const publications = [
 			'3D-PLOT-LLM: Part-Level Object Tokens for 3D Large Language Models',
 		authors:
 			'Jintang Xue, Xinyu Wang, Yixing Wu, Jingwen Chen, C.-C. Jay Kuo',
-		journal: 'arXiv',
+		journal: 'NeurIPS',
 		time: '2026',
 		link: 'https://arxiv.org/abs/2606.19828',
 		abstract:
