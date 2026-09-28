@@ -3,7 +3,7 @@ export const experiences = [
 		position: 'Software Engineering PhD Intern',
 		company: 'Google',
 		time: 'May 2026 - Aug 2026',
-		description: '',
+		description: 'HDR video quality dataset and no-reference HDR quality model (UVQ-HDR)',
 		logo: '/images/logos/google.png',
 	},
 ];
