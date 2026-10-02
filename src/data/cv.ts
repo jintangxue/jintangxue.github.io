@@ -47,6 +47,7 @@ export const publications = [
 		journal: 'NeurIPS',
 		time: '2026',
 		link: 'https://arxiv.org/abs/2606.19828',
+		code: 'https://github.com/jintangxue/3D-PLOT-LLM',
 		abstract:
 			'Reorganizing the 3D token stream into part-level markers makes object parts directly addressable as dedicated vocabulary tokens, letting the LLM name and reason about object parts — without segmentation decoders or heavier encoders.',
 		images: [
