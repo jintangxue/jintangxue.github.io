@@ -15,7 +15,7 @@ export const education = [
 		degree: 'Ph.D. in Electrical and Computer Engineering',
 		location: 'Los Angeles, CA',
 		description:
-			'Advised by Prof. C.-C. Jay Kuo\nMedia Communication Lab',
+			'Advised by Prof. C.-C. Jay Kuo\nMedia Communications Lab',
 		logo: '/images/logos/usc.svg',
 	},
 	{
