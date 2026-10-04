@@ -61,6 +61,7 @@ export const publications = [
 		authors: 'Xinyu Wang, Jintang Xue, C.-C. Jay Kuo',
 		journal: 'ECCV',
 		time: '2026',
+		link: 'https://eccv.ecva.net/virtual/2026/poster/5521',
 		abstract:
 			'Casts camouflaged object detection as scene-conditioned pattern-deviation reasoning, using an annotation-free prototype library to localize objects without retraining — narrowing the gap to fully-supervised methods.',
 		images: [
